@@ -1,0 +1,307 @@
+
+
+                                    <!DOCTYPE html>
+                                    <html>
+
+                                    <head>
+
+                                      <meta charset="utf-8">
+                                      <meta name="viewport" content="width=device-width">
+                                      <title>Lysosomal Diseases: Genotype-Phenotype Registry</title>
+                                      <style>
+                                        body{
+
+                                          font-family: Arial, sans-serif;
+                                          background-color: #f8f9fc;
+                                          color: #012169;
+                                          padding: 40px;
+                                          display: flex;
+                                          align-items: center;
+                                          flex-direction: column;
+                                          justify-content: center;
+                                        }
+                                        h1{
+                                          font-size: 2.6rem;
+                                          color: #012169;
+                                          margin-bottom: 30px;
+                                          text-align: center;
+                                        }
+
+                                        .form-container{
+                                          width: 100%;
+                                          max-width: 900px;
+                                          margin: 0 auto
+                                        }
+
+                                        form {
+                                          background-color: #ffffff;
+                                          padding: 30px;
+                                          border-radius: 8px;
+                                          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08)
+                                        }
+
+                                          .form-section{
+                                            margin-bottom: 35px;
+
+                                          }
+                                          .form-section label{
+                                            font-weight:bold;
+                                            margin-bottom: 8px;
+                                            display: block;
+                                          }
+                                        .form-sectin-title{
+                                          font-size: 1.1rem;
+                                          margin-bottom: 8px;
+                                          font-weight: bold;
+                                          border-bottom: 1px solid #ccc;
+                                          padding-bottom: 5px
+                                        }
+
+                                        .input-row{
+                                          display: flex;
+                                          gap: 30px;
+                                          flex-wrap: wrap;
+                                          align-items: center;
+                                          margin-top: 10px;
+                                        }
+
+                                        .input-group{
+                                          display: flex;
+                                          flex-direction: column;
+                                          width: 220px;
+                                        }
+
+                                        input[type="text"], select {
+                                          padding: 10px;
+                                          border: 1px solid #ccc;
+                                          border-radius: 5px; 
+                                          font-size: 0.95rem;
+                                        }
+                                        .hidden{
+                                          display: none
+                                        }
+
+                                        .submit-button{
+                                          background-color: #012169;
+                                          color: #ffffff;
+                                          border: none;
+                                          padding: 10px 20px;
+                                          border: none;
+                                          border-radius: 6px;
+                                          font-size: 1rem;
+                                          cursor: pointer;
+                                          transition: background-color 0.3s ease;
+
+                                        }
+
+                                        .submit-button:hover {
+                                          background-color: #001f4d;
+                                        }
+                                      </style>
+
+
+                                      <link href="style.css" rel="stylesheet" type="text/css" />
+                                    </head>
+
+                                      <script>
+
+
+                                        function handleSelectChange(){
+                                          const selectElement = document.getElementById("identified").value;
+                                          const otherInput = document.getElementById("otherInput");
+                                          otherInput.style.display = selectElement === "Other" ? "block" : "none"
+                                        }
+
+                                        function validateForm(){
+                                          const hipaaConfirm = document.getElementById('hipaaConfirm');
+                                          if(!hipaaConfirm.checked){
+                                            event.preventDefault();
+                                            alert("Please confirm HIPAA compliance to proceed");
+                                            return false;
+                                            
+                                          }
+                                          
+                                        }
+
+                                        function toggleSidebar() {
+                                          const sidebar = document.getElementById("sidebar");
+                                          if (sidebar.style.left === "0px") {
+                                            sidebar.style.left = "-250px"; // Hide it
+                                          } else {
+                                            sidebar.style.left = "0px"; // Show it
+                                          }
+                                        }
+                                        
+                                      </script>
+                                    <body>
+
+                                       <div id="menu-toggle" onclick="toggleSidebar()">☰</div>
+
+                                      <div id="sidebar">
+                                        <h2>Registry Menu</h2>
+                                        <ul>
+                                          <li><a href="#submit-section">➕ Submit Entry</a></li>
+                                          <li><a href="https://docs.google.com/spreadsheets/d/1J-RB5HG8_zi7aK_DHsTfhrkrqdd_bxHnyWmtFRBBWN4/edit?usp=sharing" target="_blank">📄 View Registry</a></li>
+
+                                          <li><a href="#contact">📬 Contact</a></li>
+                                        </ul>
+                                      </div>
+
+                                      
+                                     
+
+                                      <div class = "form-container">
+                                        <h1> Lysosomal Diseases: Genotype-Phenotype Registry</h1>
+                                        <form method="post" enctype="application/x-www-form-urlencoded" action="https://script.google.com/macros/s/AKfycbwBLFBUMZBe8zSS0zhcy4hYOYY6BuN2WChQna_OXUFiKYmpXPRF0wg0poPJNPr6DEhK/exec" onsubmit="return validateForm()">
+
+
+
+                                          <div class = "form-section">
+                                            <div class = "form-section-title"> Submitter Information</div>
+                                            <label > Submitter's Name: </label>
+                                            <input type = "text" name = "Submitter" placeholder = "e.g. John Doe">
+                                            <label>Organization: </label>
+                                            <input type = "text" name = "Organization" placeholder = "e.g. Duke University">
+                                           <label> Contact Email: </label>
+                                            <input type="text" name="Email" placeholder="e.g. john.doe@gmail.com">
+
+                                      </div>
+
+                                          <div class = "form-section">
+                                            <div class = "form-section-title"> Genetic Information</div>
+                                            <!-- Gene input -->
+                                            <label for="Gene">Gene:</label>
+                                            <input type="text" name="Gene" id="Gene" placeholder="e.g. GAA">
+
+                                            <div style = "margin-top: 15px;">
+                                              <label for="Variant">Variant:</label>
+                                              <input type="text" name="Variant" id="Variant" placeholder="e.g. c.1234A>G">
+
+                                               <!--Identified through input (Multiple choice/JS function for other input)-->
+                                              <div style = "display: flex; align-items: center; margin-top: 20px;">
+                                                 <label for="identified">Identified through:</label>
+                                                 <select name="Identified through" id="identified" onchange="handleSelectChange()">
+                                                   <option value="NBS">New Born Screening</option>
+                                                   <option value="Clinical Setting">Clinical Setting</option>
+                                                   <option value="Other">Other</option>
+                                                 </select>
+                                                <!--Other input (JS function to display)-->
+                                                <div id = "otherInput" style = "display:none; margin-right; 20px;">
+                                                  <label for = "other"> Please specify: </label>
+                                                  <input type = "text" name = "other" id = "other" placeholder = "Other">
+                                                  </div>
+
+
+
+                                          </div>
+
+                                              <div class = "form-section">
+                                                <!--Enzyme activity-->
+                                                <div style = "margin-top: 20px;">
+                                                  <label for = "enzymeActivity"  style = "color: #012169;"  > Enzyme Activity: </label>
+                                                  <div style = "display: flex; align-items: center; gap: 15px; margin-top: 8px;flex-wrap:wrap;">
+
+                                                    <input type = "text"  name = "enzymeActivity" id = "enzymeActivity" placeholder = "Value" style = "width: 100px;">
+
+                                                    <label for = "units"  style = "color: #012169;" > Units: </label>  
+                                                    <input type = "text" name = "units" id = "units"  style = "width: 100px;">
+
+                                                      <label for= "cutoff" style = "color: #012169;" > Cutoff: </label>
+                                                    <input type = "text" name = "cutoff" id = "cutoff"  style = "width: 100px;">
+                                                  </div>
+
+
+
+
+
+
+                                          <!--Clinical Phenotype section-->
+                                          <div style = "margin-top: 20px;">
+                                            <label for = "clinicalPhenotype" style = "color: #012169;" > Clinical Phenotype: </label>
+                                            <label style = "color: #012169; align-items: center; gap: 15px; flex-wrap: wrap; margin-top:8px;" >
+                                              <div class = "input-row">
+                                                <div class = "input-group">
+                                              <label for = "neuro" >Neuromuscular: </label>
+                                              <input type = "text" name = "neuro" id = "neuro" style = "width: 100px;">
+                                                  </div>
+                                                <div class = "input-group">
+
+                                              <label for = "pulmonary" >Pulmonary: </label>
+                                              <input type = "text" name = "pulmonary" id = "pulmonary" style = "width: 100px;">
+                                                   </div>
+
+
+                                              <div class = "input-group">
+                                              <label for = "cardiac" > Cardiac: </label>
+                                              <input type = "text" name = "cardiac" id = "cardiac" style = "width: 100px;">
+                                          </div>
+
+                                          <!--Biochemical Assays section-->
+                                          <div style = "margin-top: 20px;">
+                                            <label for = "biochemicalAssays" style = "color: #012169;" > Biochemical Assays: </label>
+                                            <label style = "color: #012169; align-items: center; gap: 15px; flex-wrap: wrap; margin-top:8px;" >
+
+
+                                              <!---Creatine <Kinase-->
+                                                 <label for = "ck">Creatine Kinase: </label>
+                                                    <div class = "input-row">
+                                                 <input type = "text"  name = "ck" id = "ck" style = "width: 100px;">
+                                                 <label for = "ckUnits"> Units: </label>
+                                                 <input type = "text"  name = "ckUnits" id = "ckUnits" style = "width: 100px;">
+                                                 <label for = "ckCutoff"> Cutoff: </label>
+                                                 <input type = "text"  name= "ckCutoff" id = "ckCutoff" style = "width: 100px;">
+
+                                                    <!---AST-->
+                                                     <div style = "margin-top: 10px">
+                                                       <label for = "ast" > AST (Aspartate Aminotransferase): </label>
+                                                       <div class = "input-row">
+                                                       <input type = "text" name = "ast" id = "ast" style = "width: 100px;">
+                                                       <label for = "astUnits"> Units: </label>
+                                                       <input type = "text"  name = "astUnits" id = "astUnits" style = "width: 100px;">
+                                                       <label for = "astCutoff" > Cutoff: </label>
+                                                       <input type = "text" name = "astCutoff" id = "astCutoff" style = "width: 100px;">
+                                                    </div>
+                                                    </div>
+
+
+
+                                                    <!---ALT-->
+                                                   <div style = "margin-top: 10px">
+                                                     <label for = "alt" > ALT (Alanine Aminotransferase): </label>
+                                                     <div class = "input-row">
+                                                     <input type = "text" name = "alt" id = "alt" style = "width: 100px;">
+                                                     <label for = "altUnits" > Units: </label>
+                                                     <input type = "text" name = "altUnits" id = "altUnits" style = "width: 100px;">
+                                                     <label for = "altCutoff" > Cutoff: </label>
+                                                     <input type = "text" name = "altCutoff" id = "altCutoff" style = "width: 100px;">
+                                          </div>
+
+                                                  <div class = "form-section" style ="margin-top: 30px;"">
+                                                    <div class = "form-section-title"> Histology: </div>
+                                                    <input type = "text" name = "histology" id = "histology" placeholder = "Provide histologic details" style = "width: 200px;">
+                                                      </div>
+                                                     </div>
+
+
+                                                  <div class="checkbox-group" style="margin-top: 15px;  display: flex; align-items: center;">
+                                                    <input type="checkbox" id="hipaaConfirm" required>
+                                                    <label for="hipaaConfirm">I confirm that no identifiable patient information is included and all data complies with HIPAA regulations.</label>
+                                                  </div>
+
+                                                  <div style="text-align: right; margin-top: 30px;">
+                                                    <button type="submit" class="submit-button">Submit</button>
+                                                  </div>
+                                                      
+
+
+
+
+
+
+                                      </form>
+
+
+                                    </body>
+
+                                    </html>
+                                                      
